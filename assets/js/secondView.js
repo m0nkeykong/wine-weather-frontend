@@ -1,4 +1,17 @@
-window.onload = function () {
+$("#ldview2").click(() => {
+    //get data
+    
+
+
+
+
+
+
+
+
+
+
+    //create View 2 to display
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         theme: "light2",
@@ -25,4 +38,4 @@ window.onload = function () {
         }]
     });
     chart.render();
-}
+});

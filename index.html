@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="assets/js/secondView.js"></script>
+		
 	</head>
 	<body class="is-preload">
 
@@ -15,12 +15,12 @@
 				<h1>Haim and Roni</h1>
 				<nav>
 					<ul>
-						<li><a href="#intro">Subject</a></li>
-						<li><a href="#one">Who makes the most wines?</a></li>
+						<li><a href="#intro">Intro</a></li>
+						<li><a href="#one">Wine Manufacturers</a></li>
 						<li><a href="#two">Alchol and Pricing</a></li>
 						<li><a href="#three">Climate and Wine</a></li>
 						<li><a href="#coldConclusions">Cold Weather Conclusions</a></li>
-						<li><a href="#coldConclusions">Warm Weather Conclusions</a></li>
+						<li><a href="#warmConclusions">Warm Weather Conclusions</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -30,7 +30,7 @@
 				<div class="content">
 					<header>
 						<h2>Wine and Weather</h2>
-						<h3>Are They Connected?</h3>
+						<h4>Are They Related?</h4>
 					</header>
 					<footer>
 						<a href="#one" class="button style2 down">More</a>
@@ -42,20 +42,20 @@
 			<section id="one" class="main style2 left dark fullscreen">
 				<div class="content box style2">
 					<header>
-						<h2>Who makes the most wines?</h2>
+						<h2>Who is the biggest wine manufacturer?</h2>
 					</header>
-					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
+					<p>The wine world is not only small pictorial vineyards with a horse pulling a plow between the vines.<br>
+					There is a handful of very large wine producers in the world, who together represent a quite big proportion of world wine production.<br>
+					It is not always obvious who they are since they sell their wines under a variety of different brands and rarely under their own name.</p>
 				</div>
 				<a href="#viewOne" class="button style2 down anchored">Next</a>
 			</section>
 
 		<!-- View One -->
-		<section id="viewOne" class="main style2 left dark fullscreen">
-			<div class="content box style2">
+		<section id="viewOne" class="main style3 left dark fullscreen">
+			<div class="content box style3">
 				<header>
-					<h2>Who makes the most wines?</h2>
+					<h2>Who is the biggest wine manufacturer?</h2>
 				</header>
 				<p>First View Here</p>
 			</div>
@@ -68,11 +68,10 @@
 					<header>
 						<h2>Alchol and Pricing</h2>
 					</header>
-					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
+					<p>It's not accurate to say across the board that less expensive wines have a lower alcohol content than expensive ones.<br>
+					  The wine process is basically the same no matter what the price point, but the biggest factor in determining alcohol content is the ripeness of the grapes.</p>
 				</div>
-				<a href="#viewTwo" class="button style2 down anchored">Next</a>
+				<a id="ldview2" href="#viewTwo" class="button style2 down anchored">Next</a>
 			</section>
 
 		<!-- View Two -->
@@ -82,7 +81,8 @@
 				<header>
 					<h2>Alchol and Pricing</h2>
 				</header>
-				<div id="chartContainer" style="height: 80%; width: 100%;"></div>
+				<p></p>
+				<div id="chartContainer"></div>
 			</div>
 			<a href="#three" class="button style2 down anchored">Next</a>
 		</section>
@@ -93,16 +93,17 @@
 				<header>
 					<h2>Climate and Wine</h2>
 				</header>
-				<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
+				<p>Wine grapes grow from Mexico to British Columbia. <br>
+				The wide range in climates that grapes can grow results in different tasting wines.<br>
+				For this reason, wine regions are grouped into two major climate types: Warm Climate vs. Cool Climate. <br>
+				If you understand the general characteristics of both climate types, you can explore new wines from the climate type you prefer.</p>
 			</div>
 			<a href="#viewThree" class="button style2 down anchored">Next</a>
 		</section>
 
 		<!-- View Three -->
-		<section id="viewThree" class="main style2 right left fullscreen">
-			<div class="content box style2">
+		<section id="viewThree" class="main style3 right left fullscreen">
+			<div class="content box style3">
 				<header>
 					<h2>Climate and Wine</h2>
 				</header>
@@ -118,11 +119,10 @@
 					<h1>Conclusions</h1>
 					<h2>Cold Weather Growings</h2>
 				</header>
-				<p style='direction:rtl'>ככל שהאקלים קר יותר, כך לענב קשה יותר להיות בשל - מה שגורר טעם חמוץ יותר, רמת סוכר נמוכה יותר, מה שגורר ליינות יבשים
-				יותר ורמות אלכוהול נמוכות יותר.<br>
-				רמת הבשלות של הענבים מושפעת באופן ישיר מכמות השמש שאליה נחשף הענב - ולאו דווקא לטמפרטורה שבה הוא נמצא, זו הסיבה שגשם
-				ממושך יכול להוות בעיה באזורים בהם מגדלים יין.<br>
-				דבר נוסף הוא שככל שגפן הענב צובר מים - כך הענב צובר יותר לחות ובסופו של דבר הוא יותר רך גולמי ומדולל.</p>
+				<p>The colder the climate, the more difficult it is for the grape to be ripe - which means a more sour taste, lower sugar level, which leads to dry wines and lower levels of alcohol.
+				<br>The ripeness of the grapes is directly affected by the amount of the sun on which the grape is exposed to and not necessarily to the temperature it is grown in. 
+				<br>This is why prolonged rain can be a problem in areas where wine is grown. 
+				<br>Another thing is that the more water the grapevine collects, the moisture the grape will get - leading to raw and diluted material</p>
 			</div>
 			<a href="#warmConclusions" class="button style2 down anchored">Next</a>
 		</section>
@@ -134,26 +134,25 @@
 					<h1>Conclusions</h1>
 					<h2>Warm Weather Growings</h2>
 				</header>
-				<p style='direction:rtl'>ככל שהאקלים יותר חם, הענבים יותר בשלים - מה שגורר פחות חמיצות, רמות סוכר גבוהות יותר וצבע יותר כהה.
-				ככל שרמות הסוכר גבוהות יותר - כך רמת האלכוהול עולה.<br>
-				חשוב לציין כי שרמות הסוכר שנמצאת בענב אינן קשורות לרמות הסוכר שימצאו ביין לאחר ייצרו.
-				כמובן קיימת יכולת להפוך יין מתוק ליין יבש, אבל הדבר יגרור לעליית רמת האלכוהול בו.<br>
-				נקודה למחשבה - גם יין מאוד יבש עם כמות גדולה של אלכוהול עדיין מורגש לנו כמתוק מעט.<br>
-				הסיבה לכך היא שמשום מה - הגוף שלנו מזהה רמות אלכוהול גבוהות כמתיקות ביין.</p>
+				<p>As the climate is warmer, the grapes are riper - which results in less sourness, higher sugar levels, and darker color.
+				<br>The higher the sugar levels, the higher the level of alcohol.
+				<br>Note that the sugar levels in the grape are not related to the sugar levels found in wine after production.
+				<br>Of course, there is the ability to turn sweet wine into a dry wine, but this will lead to an increase in alcohol levels.
+				<br>A point to think about - even a very dry wine with a large amount of alcohol is still felt as slightly sweet.
+				<br>For some reason, our body detects high alcohol levels as sweetness in the wine.</p>
 			</div>
-			<a href="#thanks" class="button style2 down anchored">Next</a>
+			<a id="rdyGF" href="#thanks" class="button style2 down anchored">Next</a>
 		</section>
 
 		<!-- thanks -->
 		<section id="thanks" class="main style3 right left fullscreen">
-			<div class="content">
+			<div class="content box style3">
 				<header>
-					<h2>Thank for listening</h2>
+					<h2>Thanks for listening</h2>
 				</header>
-				<p>We hope that just like us, you've learned something new and interesting.</p>
+				<audio id="grandFinale" src="assets/mp3/audio.mp3"></audio>
 			</div>
 		</section>
-
 		<!-- Scripts -->
 			<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 			<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
@@ -164,5 +163,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/firstView.js"></script>
+			<script src="assets/js/secondView.js"></script>
+			<script src="assets/js/thirdView.js"></script>
 	</body>
 </html>
