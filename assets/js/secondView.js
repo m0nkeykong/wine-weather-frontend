@@ -1,28 +1,26 @@
 window.onload = function () {
-
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
-        exportEnabled: true,
+        theme: "light2",
         axisY: {
             includeZero: false,
-            title: "Salary in USD",
-            interval: 10,
-            suffix: "k",
-            prefix: "$"
+            title: "Alcohol/Lit",
+            crosshair: {
+                enabled: true
+            },
+            gridColor: "white"
         },
         data: [{
+            fillOpacity: .7,
             type: "rangeBar",
-            showInLegend: true,
-            yValueFormatString: "$#0.#K",
-            indexLabel: "{y[#index]}",
-            legendText: "Department wise Min and Max Salary",
-            toolTipContent: "<b>{label}</b>: {y[0]} to {y[1]}",
+            indexLabel: "{y[#index]}%",
+            toolTipContent: "<b>Country</b>: {label} <br> <b>Alcohol Precent</b>: {y[0]}% - {y[1]}%<br> <b>Price Range</b>: {price[0]}$ - {price[1]}$",
             dataPoints: [
-                { x: 10, y: [80, 115], label: "Data Scientist" },
-                { x: 20, y: [95, 141], label: "Product Manager" },
-                { x: 30, y: [98, 115], label: "Web Developer" },
-                { x: 40, y: [90, 160], label: "Software Engineer" },
-                { x: 50, y: [100, 152], label: "Quality Assurance" }
+                { y: [12.7, 30], label: "Israel", price: [10, 20]},
+                { y: [12.7, 30], label: "Russia", price: [10, 20] },
+                { y: [12.7, 30], label: "Italy", price: [10, 20] },
+                { y: [12.7, 30], label: "Spain", price: [10, 20] },
+                { y: [12.7, 30], label: "USA", price: [10, 20] }
             ]
         }]
     });
