@@ -2,7 +2,9 @@ $("#ldview2").click(() => {
     //get data
     var dps = new Array();
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://wineandweather.herokuapp.com/api/AlcoholVolsEachCountry', true);
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url = "https://wine-weather.herokuapp.com/api/AlcoholVolsEachCountry"; // site that doesn’t send Access-Control-*
+    request.open('GET', proxyurl + url, true);
     request.onload = function () {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
@@ -45,12 +47,10 @@ $("#ldview2").click(() => {
                     dataPoints: dps
                 }]
             });
-            chart.render();
-                            
+            chart.render();        
         } else {
             console.log(`Gah, it's not working!`);
         }
     }
-    request.send()
-    console.log(dps)
+    request.send();
 });
