@@ -18,14 +18,19 @@ $("#ldview2").click(() => {
                 }
                 minPrice = data[k].map(function(el){return el.Price}).reduce(function(el){return Math.min(el)});     //get min price
                 minAlcohol = data[k].map(function(el){return el.Alcohol}).reduce(function(el){return Math.min(el)});     //get min alcohol
-                dps.push({y: [minAlcohol, parseFloat(maxAlcohol)], label: k, price: [minPrice, parseFloat(maxPrice)]});
+                if(minAlcohol == maxAlcohol) ++maxAlcohol;
+                dps.push({y: [parseFloat(minAlcohol), parseFloat(maxAlcohol)], label: k, price: [parseFloat(minPrice), parseFloat(maxPrice)]});
             }      
-            console.log(dps.length);   
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 theme: "light2",
+                axisX: {
+                    interval: 1,
+                    labelFontSize: 10,
+                },
                 axisY: {
                     includeZero: false,
+                    labelFontSize: 15,
                     title: "Alcohol/Lit",
                     crosshair: {
                         enabled: true
@@ -47,4 +52,5 @@ $("#ldview2").click(() => {
         }
     }
     request.send()
+    console.log(dps)
 });
