@@ -1,4 +1,4 @@
-$("#ldview3").click(() => {
+$("#ldview1").click(() => {
     //get data
-    
+
 });

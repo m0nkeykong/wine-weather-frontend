@@ -20,6 +20,11 @@ section, summary, time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+a, a:visited > h1 {
+	text-decoration: none;
+	color: black;
+}
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
@@ -2250,6 +2255,13 @@ input, select, textarea {
 	background-position: top left, center center;
 }
 
+/* First View */
+svg {
+	background: #f1f1f1;
+}
+
+
+/* Second View*/
 #chartContainer {
 	height: 93%; 
 	width: 100%;

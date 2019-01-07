@@ -13,7 +13,9 @@ $("#ldview2").click(() => {
                 var maxPrice = 0.0, maxAlcohol = 0.0, minPrice = 0.0, minAlcohol = 0.0;
                 for(var i = 0; i < data[k].length; ++i){
                     //console.log(data[k][i].Alcohol)
-                    if (data[k][i].Price != 'Price pending'){       //to solve issues
+                    data[k][i].Price = data[k][i].Price.substr(1);
+                    console.log(data[k][i].Price)
+                    if (data[k][i].Price != 'rice pending'){       //to solve issues
                         if(maxPrice < data[k][i].Price) maxPrice = data[k][i].Price;
                     }
                     if(maxAlcohol < data[k][i].Alcohol) maxAlcohol = data[k][i].Alcohol;
