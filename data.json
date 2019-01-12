@@ -1,1 +1,58 @@
-﻿
+[
+    {
+        "Switzerland": 1,
+        "Temperature": 9.23
+    },
+    {
+        "United Kingdom": 3,
+        "Temperature": 19.23
+    },
+    {
+        "Slovakia": 2,
+        "Temperature": 19.23
+    },
+    {
+        "Armenia": 3,
+        "Temperature": 19.23
+    },
+    {
+        "Mexico": 1,
+        "Temperature": 9.23
+    },
+    {
+        "Uruguay": 2,
+        "Temperature": 19.23
+    },
+    {
+        "Republic of Moldova": 8,
+        "Temperature": 9.23
+    },
+    {
+        "Lebanon": 4,
+        "Temperature": 19.23
+    },
+    {
+        "Croatia": 9,
+        "Temperature": 9.23
+    },
+    {
+        "Republic of Macedonia": 3,
+        "Temperature": 19.23
+    },
+    {
+        "Bulgaria": 6,
+        "Temperature": 9.23
+    },
+    {
+        "Canada": 1042,
+        "Temperature": 19.23
+    },
+    {
+        "Austria": 132,
+        "Temperature": 19.23
+    },
+    {
+        "Australia": 560,
+        "Temperature": 9.23
+    }
+]
