@@ -1,58 +1,108 @@
 $("#ldview2").click(() => {
     //get data
-    var dps = new Array();
     var request = new XMLHttpRequest();
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = "https://wine-weather.herokuapp.com/api/AlcoholVolsEachCountry"; // site that doesn’t send Access-Control-*
     request.open('GET', proxyurl + url, true);
+    request.send();
     request.onload = function () {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
-        if (request.status >= 200 && request.status < 400) {
-            for (var k in data){
-                var maxPrice = 0.0, maxAlcohol = 0.0, minPrice = 0.0, minAlcohol = 0.0;
-                for(var i = 0; i < data[k].length; ++i){
-                    //console.log(data[k][i].Alcohol)
-                    data[k][i].Price = data[k][i].Price.substr(1);
-                    console.log(data[k][i].Price)
-                    if (data[k][i].Price != 'rice pending'){       //to solve issues
-                        if(maxPrice < data[k][i].Price) maxPrice = data[k][i].Price;
-                    }
-                    if(maxAlcohol < data[k][i].Alcohol) maxAlcohol = data[k][i].Alcohol;
+        var labels = [];
+        var prices = [];
+        var alcohols = [];
+        for (var k in data){
+            var maxPrice = 0.0, maxAlcohol = 0.0, minPrice = 0.0, minAlcohol = 0.0;
+            labels.push(k);
+            for(var i = 0; i < data[k].length; ++i){
+                //console.log(data[k][i].Alcohol)
+                data[k][i].Price = data[k][i].Price.substr(1);
+                if (data[k][i].Price != 'rice pending'){       //to solve issues
+                    if(maxPrice < data[k][i].Price) maxPrice = data[k][i].Price;
                 }
-                minPrice = data[k].map(function(el){return el.Price}).reduce(function(el){return Math.min(el)});     //get min price
-                minAlcohol = data[k].map(function(el){return el.Alcohol}).reduce(function(el){return Math.min(el)});     //get min alcohol
-                if(minAlcohol == maxAlcohol) ++maxAlcohol;
-                dps.push({y: [parseFloat(minAlcohol), parseFloat(maxAlcohol)], label: k, price: [parseFloat(minPrice), parseFloat(maxPrice)]});
-            }      
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                theme: "light2",
-                axisX: {
-                    interval: 1,
-                    labelFontSize: 10,
+                if(maxAlcohol < data[k][i].Alcohol) maxAlcohol = data[k][i].Alcohol;
+            }
+            prices.push(maxPrice);
+            alcohols.push(maxAlcohol);
+        }      
+
+        var ctx2 = document.getElementById("myChart2");
+        ctx2.height = 140;
+        new Chart(ctx2, {
+            type: 'bar',
+            options: {
+                tooltips: {
+                    callbacks: {
+                        title: function (tooltipItem) {
+                            return tooltipItem[0].xLabel;
+                        },
+                        label: function (tooltipItem) {
+                            return tooltipItem.datasetIndex === 1 ? 'Price: $' + tooltipItem.yLabel : 'Alcohol: ' + tooltipItem.yLabel + '%';
+                        }
+                    }
                 },
-                axisY: {
-                    includeZero: false,
-                    labelFontSize: 15,
-                    title: "Alcohol/Lit",
-                    crosshair: {
-                        enabled: true
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "black",
+                            fontStyle: 600,
+                            autoSkip: false
+                        },
+                        gridLines: {
+                            color: "white",
+                            fontStyle: 600
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Country',
+                            fontColor: "black",
+                            fontStyle: 600,
+                            fontSize: 20
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            fontStyle: 600
+                        },
+                        gridLines: {
+                            color: "white",
+                            fontStyle: 600
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Alcohol and Price',
+                            fontColor: "black",
+                            fontStyle: 600,
+                            fontSize: 20
+                        }
+                    }]
+                },
+                legend: {
+                    labels: {
+                        fontStyle: 1000,
+                        fontColor: 'black',
+                        borderColor: 'white',
+                        borderWidth: 1
+                    }
+                }
+            },
+            data: {
+                datasets: [
+                    {
+                        label: 'Alcohol',
+                        data: alcohols,
+                        type: 'line'
                     },
-                    gridColor: "white"
-                },
-                data: [{
-                    fillOpacity: .7,
-                    type: "rangeBar",
-                    zzzzindexLabel: "{y[#index]}%",
-                    toolTipContent: "<b>Country</b>: {label} <br> <b>Alcohol Precent</b>: {y[0]}% - {y[1]}%<br> <b>Price Range</b>: {price[0]}$ - {price[1]}$",
-                    dataPoints: dps
-                }]
-            });
-            chart.render();        
-        } else {
-            console.log(`Gah, it's not working!`);
-        }
+                    {
+                        label: 'Price',
+                        data: prices,
+                        backgroundColor: 'white'
+                    }
+                ],
+                labels: labels
+            }
+        });
+        console.log('view 2 loaded');
     }
-    request.send();
 });
