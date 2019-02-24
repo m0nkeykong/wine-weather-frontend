@@ -40,7 +40,7 @@ $("#ldview3").click(() => {
                 if (country._id == countries[i].properties.name)
                     ctr = countries[i].properties.iso;
             }
-            a = Object.assign({ drinks: country.drinks }, { temperature: country.temperature }, { maxSugar: country.maxSugar }, { minSugar: country.minSugar }, { maxAlcohol: country.maxAlcohol }, { minAlcohol: country.minAlcohol }, { fillKey: fillKey });
+            a = Object.assign({ drinks: country.drinks }, { temperature: country.temperature.toFixed(3) }, { maxSugar: country.maxSugar }, { minSugar: country.minSugar }, { maxAlcohol: country.maxAlcohol }, { minAlcohol: country.minAlcohol }, { fillKey: fillKey });
             obj[`${ctr}`] = a;
         })
 
@@ -58,15 +58,18 @@ $("#ldview3").click(() => {
             },
             data: obj,
             geographyConfig: {
+                highlightFillColor: 'white',
+                highlightBorderColor: '#7d7d7d',
+                highlightBorderWidth: 2,
                 popupTemplate: function(geo, data) {
                     return ['<div class="hoverinfo">' +
                             '<b>' + geo.properties.name + '</b>' +
-                            '<br>Number Of Bottels: ' + data.drinks +
-                            '<br>Temperature: ' + data.temperature +
-                            '<br>Max. Sugar Level: ' + data.maxSugar + 
-                            '<br>Min. Sugar Level: ' + data.minSugar + 
-                            '<br>Max. Alcohol Level: ' + data.maxAlcohol +
-                            '<br>Min. Sugar Level: ' + data.minAlcohol +  
+                            '<br><u>Number Of Bottels:</u> ' + data.drinks +
+                            '<br><u>Temperature:</u> ' + data.temperature +
+                            '<br><u>Max. Sugar Level:</u> ' + data.maxSugar + 
+                            '<br><u>Min. Sugar Level:</u> ' + data.minSugar + 
+                            '<br><u>Max. Alcohol Level:</u> ' + data.maxAlcohol +
+                            '<br><u>Min. Sugar Level:</u> ' + data.minAlcohol +  
                             '</div>'].join('');
                 }
             } 
