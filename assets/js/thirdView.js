@@ -5,28 +5,45 @@ $("#rdyGF").click(() => {
 
 $("#ldview3").click(() => {
     //get data
-    // var request = new XMLHttpRequest();
-    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    // const url = "https://wine-weather.herokuapp.com/api/SugarTemperatureAlcoholEachCountry"; // site that doesn’t send Access-Control-*
-    // request.open('GET', proxyurl + url, true);
-    // request.send();
-    // request.onload = function () {
+    var request = new XMLHttpRequest();
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    const url = "https://wine-weather.herokuapp.com/api/SugarTemperatureAlcoholEachCountry"; // site that doesn’t send Access-Control-*
+    request.open('GET', proxyurl + url, true);
+    request.send();
+    request.onload = function () {
 
-        //parse data    
+        //parse data
+        var data = JSON.parse(this.response);
+        var obj = {};
+        var countries = Datamap.prototype.worldTopo.objects.world.geometries;               // to get all country codes
+        var ctr = "";
+        data.forEach((country) => {
+            var fillKey = "";
 
-        if (x >= 30)
-            fillKey = 'HOT'
-        else if (x < 30 && x >= 25)
-            fillKey = 'WARM'
-        else if (x < 25 && x >= 18)
-            fillKey = 'NICE'
-        else if (x < 18 && x >= 12)
-            fillKey = 'CHILLI'
-        else if (x < 12 && x > 4)
-            fillKey = 'COLD'
-        else
-            fillKey = 'FREEZING'
-        
+            // Float convertion
+            var temperature = parseFloat(country.temperature);
+            
+            if (temperature >= 30)
+                fillKey = 'HOT';
+            else if (temperature < 30 && temperature >= 25)
+                fillKey = 'WARM';
+            else if (temperature < 25 && temperature >= 18)
+                fillKey = 'NICE';
+            else if (temperature < 18 && temperature >= 12)
+                fillKey = 'CHILLI';
+            else if (temperature < 12 && temperature > 4)
+                fillKey = 'COLD';
+            else
+                fillKey = 'FREEZING';
+
+            for (var i = 0, j = countries.length; i < j; i++) {
+                if (country._id == countries[i].properties.name)
+                    ctr = countries[i].properties.iso;
+            }
+            a = Object.assign({ drinks: country.drinks }, { temperature: country.temperature }, { maxSugar: country.maxSugar }, { minSugar: country.minSugar }, { maxAlcohol: country.maxAlcohol }, { minAlcohol: country.minAlcohol }, { fillKey: fillKey });
+            obj[`${ctr}`] = a;
+        })
+
         //create worldmap element
         new Datamap({ 
             element: document.getElementById('worldMap'),
@@ -37,32 +54,13 @@ $("#ldview3").click(() => {
                 CHILLI: '#9bc5ff',        // 12 =< && > 18
                 COLD: '#79acf2',          // 4 < && > 12
                 FREEZING: '#3c86ec',      // =< 4
-                defaultFill: 'light gray' // Any hex, color name or rgb/rgba value
+                defaultFill: '#898484' // Any hex, color name or rgb/rgba value
             },
-            data: {
-                IRL: {
-                    fillKey: 'HIGH',
-                    drinks: 1,
-                    temperature: -1.9222222222222227,
-                    maxSugar: 7,
-                    minSugar: 7,
-                    maxAlcohol: 11.5,
-                    minAlcohol: 11.5
-                },
-                USA: {
-                    fillKey: 'LOW',
-                    drinks: 1,
-                    temperature: -1.9222222222222227,
-                    maxSugar: 7,
-                    minSugar: 7,
-                    maxAlcohol: 11.5,
-                    minAlcohol: 11.5
-                }
-            },
+            data: obj,
             geographyConfig: {
                 popupTemplate: function(geo, data) {
                     return ['<div class="hoverinfo">' +
-                            geo.properties.name +
+                            '<b>' + geo.properties.name + '</b>' +
                             '<br>Number Of Bottels: ' + data.drinks +
                             '<br>Temperature: ' + data.temperature +
                             '<br>Max. Sugar Level: ' + data.maxSugar + 
@@ -73,7 +71,7 @@ $("#ldview3").click(() => {
                 }
             } 
         });
-
-    //     console.log('view 3 loaded');
-    // }
+        
+        console.log('view 3 loaded');
+    }
 });

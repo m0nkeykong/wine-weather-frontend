@@ -2256,10 +2256,6 @@ input, select, textarea {
 }
 
 /* First View */
-svg {
-	background: #f1f1f1;
-}
-
 
 /* Second View*/
 #chartContainer {
@@ -2271,6 +2267,6 @@ svg {
 #worldMap {
 	position: relative;
 	height: 100%; 
-	width: 80%;
+	width: 85%;
 	margin: 0 auto;
 }
