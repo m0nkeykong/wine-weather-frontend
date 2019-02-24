@@ -2263,6 +2263,14 @@ svg {
 
 /* Second View*/
 #chartContainer {
-	height: 93%; 
+	height: 60%; 
 	width: 100%;
+}
+
+/* Third View*/
+#worldMap {
+	position: relative;
+	height: 100%; 
+	width: 80%;
+	margin: 0 auto;
 }
